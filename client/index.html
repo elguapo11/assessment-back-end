@@ -4,7 +4,31 @@
     <title>Back End Assessment</title>
   </head>
   <body class="container">
+    <h2>Tell Me about Who You Are:</h2>
+    &nbsp;
+        <p>Yes, I'm aware this is an incredibly difficult question to answer, but do your best</p>
+        &nbsp;
+        <div>
+            <textarea></textarea>
+            <button id="submit">Submit</button>
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            &nbsp;
     <button id="complimentButton">Get a compliment</button>
+    <button id="fortuneButton">Get a fortune</button>
+    <button id="chessButton">Get Chess Advice</button>
+    <div class="inputbox" id="radio">
+      <form>
+          <input type="radio" name="personalityType" value="Introvert" id="Introvert"/>
+          <label for="female">Introvert</label>
+          <input type="radio" name="personalityType" value="Extrovert" id="Extrovert"/>
+          <label for="male">Extrovert</label>
+          <input type="radio" name="personalityType" value="Ambivert" id="Amivert"/>
+          <label for="other">Ambivert</label>
+        </form>                      
+      <form>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -14,7 +38,40 @@
               const data = response.data;
               alert(data);
             });
-      };
+      }; 
+      
+      document.getElementById("fortuneButton").onclick = function () {
+        axios.get("http://localhost:4000/api/fortune/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      }; 
+
+      document.getElementById("chessButton").onclick = function () {
+        axios.get("http://localhost:4000/api/chess/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      }; 
+
+      document.getElementById("radio").onclick = function () {
+        axios.get("http://localhost:4000/api/type/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      }; 
+      document.getElementById("submit").onclick = function () {
+        axios.get("http://localhost:4000/api/submit/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      }; 
+      
+      
     </script>
   </body>
 </html>
